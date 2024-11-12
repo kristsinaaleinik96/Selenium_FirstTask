@@ -121,7 +121,7 @@ namespace Selenium_FirstTask.PO
 
         public void ClickMinPrice()
         {
-            Logger.Info("Entering MIN memory");
+            Logger.Info("Clicking on MIN memory");
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", minPriceInput);
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", minPriceInput);
 
@@ -129,8 +129,6 @@ namespace Selenium_FirstTask.PO
         public void EnterMinPrice(string minPrice)
         {
             Logger.Info("Entering MIN memory");
-            //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", minPriceInput);
-           //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", minPriceInput);
             minPriceInput.SendKeys(minPrice);
         }
 
@@ -143,9 +141,7 @@ namespace Selenium_FirstTask.PO
         }
         public void EnterMaxPrice(string maxPrice)
         {
-            Logger.Info("Entering MAX memory");
-           // ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", maxPriceInput);
-           // ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", maxPriceInput);
+            Logger.Info("Clicking on MAX memory");
             maxPriceInput.SendKeys(maxPrice);
         }
         public int GetTotalItems()

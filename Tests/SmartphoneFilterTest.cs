@@ -33,14 +33,15 @@ namespace Selenium_FirstTask.Tests
             smartphonesPage?.ClickMaxPrice();
             smartphonesPage?.EnterMaxPrice("5200");
             smartphonesPage?.SelectMemory();
-            //smartphonesPage?.SelectFullHDResolution();
+            smartphonesPage?.SelectFullHDResolution();
+            smartphonesPage?.SelectMinResolution();
+            smartphonesPage?.SelectMaxResolution();
 
             int totalAmount = smartphonesPage.GetTotalItems();
             Console.WriteLine($"Total amount of products is {totalAmount}");
 
             smartphonesPage?.VerifyEachSmartphone("Apple", 512, 1, 5000, 5200);
-           // smartphonesPage?.SelectMinResolution();
-           //smartphonesPage?.SelectMaxResolution();
+
 
         }
 
