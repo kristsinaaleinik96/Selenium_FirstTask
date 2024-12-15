@@ -16,6 +16,7 @@ namespace Selenium_FirstTask.Tests
 {
     internal class BaseTest
     {
+
         protected IWebDriver? driver;
         private readonly string? browser;
         public BaseTest(string? browser)
@@ -26,6 +27,8 @@ namespace Selenium_FirstTask.Tests
         [SetUp]
         public void Initialize()
         {
+
+            TestContext.Progress.WriteLine($"Initializing test on browser: {browser}");
             driver = GetWebDriver(browser);
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("https://www.onliner.by/");

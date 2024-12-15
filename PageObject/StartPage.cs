@@ -17,6 +17,7 @@ namespace Selenium_FirstTask.PO
         private IWebElement ProductCatalog => wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//nav//span[contains(text(), 'Каталог')]")));
         private IWebElement CookieSubmitButton => wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@id='submit-button']")));
 
+
         public void NavigateCatalog()
         {
             try

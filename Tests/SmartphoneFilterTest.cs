@@ -11,6 +11,9 @@ using Selenium_FirstTask.PO;
 namespace Selenium_FirstTask.Tests
 {
     [TestFixture("chrome")]
+    [TestFixture("firefox")]
+    [TestFixture("edge")]
+    [Parallelizable(ParallelScope.Fixtures)]
     internal class SmartphoneFilterTest : BaseTest
     {
         public SmartphoneFilterTest(string browser) : base(browser) { }
@@ -27,26 +30,28 @@ namespace Selenium_FirstTask.Tests
 
             SmartphonesPage smartphonesPage = new SmartphonesPage(driver);
             smartphonesPage?.SelectBrand();
-
-            smartphonesPage?.ClickMinPrice();
-            smartphonesPage?.EnterMinPrice("5000");
-            smartphonesPage?.ClickMaxPrice();
             smartphonesPage?.EnterMaxPrice("5200");
             smartphonesPage?.SelectMemory();
-            smartphonesPage?.SelectFullHDResolution();
-            smartphonesPage?.SelectMinResolution();
-            smartphonesPage?.SelectMaxResolution();
+
 
             int totalAmount = smartphonesPage.GetTotalItems();
             Console.WriteLine($"Total amount of products is {totalAmount}");
 
-            smartphonesPage?.VerifyEachSmartphone("Apple", 512, 1, 5000, 5200);
+            smartphonesPage?.ShowNextItems();
+            smartphonesPage?.VerifySmartphoneBrand("Apple");
+            smartphonesPage?.VerifySmartphoneMemory("512", "1");
+            smartphonesPage?.VerifySmartphonePrice(5200);
 
+            smartphonesPage?.ShowNextItems();
+            smartphonesPage?.VerifySmartphoneBrand("Apple");
+            smartphonesPage?.VerifySmartphoneMemory("512", "1");
+            smartphonesPage?.VerifySmartphonePrice(5200);
 
+            smartphonesPage?.ShowNextItems();
+            smartphonesPage?.VerifySmartphoneBrand("Apple");
+            smartphonesPage?.VerifySmartphoneMemory("512", "1");
+            smartphonesPage?.VerifySmartphonePrice(5200);
         }
-
-
-
     }
 }
 

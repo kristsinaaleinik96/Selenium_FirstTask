@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using SeleniumExtras.WaitHelpers;
 using Selenium_FirstTask.Utils;
 
+
 namespace Selenium_FirstTask.PO
 {
     public abstract class BasePage
@@ -18,16 +19,18 @@ namespace Selenium_FirstTask.PO
 
         public BasePage(IWebDriver driver)
         {
-            this.driver = driver;//здесь инициализация дайвер из класса с драйвер 
+            this.driver = driver;
             wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(10));
+            wait.Until(driver =>
+            {
+                string readyState = ((IJavaScriptExecutor)driver).ExecuteScript("return document.readyState").ToString();
+                return readyState == "complete";
+            });
         }
         public void VerifyPageTitle(string expectedTitle)
         {
             try
             {
-                //ассерт вместо кэтч
-                //можно в конструктор перенести
-
                 wait.Until(ExpectedConditions.TitleContains(expectedTitle));
                 Logger.Info($"Title is correct and contains {expectedTitle} ");
             }
