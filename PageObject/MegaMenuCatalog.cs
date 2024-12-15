@@ -14,7 +14,7 @@ namespace Selenium_FirstTask.PO
     {
 
         public MegaMenuCatalog(IWebDriver? driver) : base(driver) { }
-    
+
         private IWebElement ElectronicCatalog => wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), 'Электроника')]")));
         private IWebElement SmartphonesCatalog => wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(), 'Смартфоны')]")));
 
