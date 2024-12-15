@@ -30,7 +30,7 @@ namespace Selenium_FirstTask.PO
         private IWebElement maxScreenResolutionDropdown => wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[.='1242x2688']/following-sibling::select/option[text()='1290x2796']")));
         private IWebElement memoryCheckbox => wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//li[contains(text(), 'от 512 ГБ')]")));
         private IWebElement totalItems => wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[contains(text(), 'Найден')]")));
-        private IWebElement showMoreButton => wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[contains(text(), 'Следующие')]")));
+        private IWebElement showNextItemsButton => wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[contains(text(), 'Следующие')]")));
 
         private List<IWebElement> Smartphones => driver.FindElements(By.XPath("//a[(contains(@class, 'catalog-form__link catalog-form__link_primary-additional'))]")).ToList();
         private readonly By filterLoaderLocator = By.XPath("//div[@class='catalog-interaction__state catalog-interaction__state_initial catalog-interaction__state_disabled catalog-interaction__state_control']");
@@ -132,11 +132,11 @@ namespace Selenium_FirstTask.PO
             }
         }
 
-        public void ShowMoreItems()
+        public void ShowNextItems()
         {
-            Logger.Info("Clicking on 'Show more' button");
-            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", showMoreButton);
-            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", showMoreButton);
+            Logger.Info("Clicking on 'Show next items' button");
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", showNextItemsButton);
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", showNextItemsButton);
             WaitForPageUpdate();
         }
 

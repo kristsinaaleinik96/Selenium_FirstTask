@@ -37,17 +37,17 @@ namespace Selenium_FirstTask.Tests
             int totalAmount = smartphonesPage.GetTotalItems();
             Console.WriteLine($"Total amount of products is {totalAmount}");
 
-            smartphonesPage?.ShowMoreItems();
+            smartphonesPage?.ShowNextItems();
             smartphonesPage?.VerifySmartphoneBrand("Apple");
             smartphonesPage?.VerifySmartphoneMemory("512", "1");
             smartphonesPage?.VerifySmartphonePrice(5200);
 
-            smartphonesPage?.ShowMoreItems();
+            smartphonesPage?.ShowNextItems();
             smartphonesPage?.VerifySmartphoneBrand("Apple");
             smartphonesPage?.VerifySmartphoneMemory("512", "1");
             smartphonesPage?.VerifySmartphonePrice(5200);
 
-            smartphonesPage?.ShowMoreItems();
+            smartphonesPage?.ShowNextItems();
             smartphonesPage?.VerifySmartphoneBrand("Apple");
             smartphonesPage?.VerifySmartphoneMemory("512", "1");
             smartphonesPage?.VerifySmartphonePrice(5200);
