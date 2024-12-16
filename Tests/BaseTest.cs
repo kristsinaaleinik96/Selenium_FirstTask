@@ -36,23 +36,6 @@ namespace Selenium_FirstTask.Tests
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("https://www.onliner.by/");
         }
-        //private IWebDriver GetWebDriver(string? browser)
-        //{
-        //    switch(browser)
-        //    {
-        //        case "chrome":
-        //            new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
-        //            return new ChromeDriver();
-        //        case "firefox":
-        //            new WebDriverManager.DriverManager().SetUpDriver(new FirefoxConfig());
-        //            return new FirefoxDriver();
-        //        case "edge":
-        //            new WebDriverManager.DriverManager().SetUpDriver(new EdgeConfig());
-        //            return new EdgeDriver();
-        //        default:
-        //            throw new ArgumentException($"Unsupported browser {browser}");
-        //    }
-        //}
 
         [TearDown]
         public void CleanUp()
