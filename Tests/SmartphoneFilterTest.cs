@@ -10,13 +10,13 @@ using Selenium_FirstTask.PO;
 
 namespace Selenium_FirstTask.Tests
 {
-    [TestFixture("chrome")]
-    [TestFixture("firefox")]
-    [TestFixture("edge")]
+    [TestFixture("chrome", true)]
+    [TestFixture("firefox", false)]
+    [TestFixture("edge", true)]
     [Parallelizable(ParallelScope.Fixtures)]
     internal class SmartphoneFilterTest : BaseTest
     {
-        public SmartphoneFilterTest(string browser) : base(browser) { }
+        public SmartphoneFilterTest(string browser, bool isHeadless) : base(browser, isHeadless) { }
         [Test]
         public void ExecuteTest()
         {
