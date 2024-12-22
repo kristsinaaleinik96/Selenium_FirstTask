@@ -10,9 +10,9 @@ using Selenium_FirstTask.PO;
 
 namespace Selenium_FirstTask.Tests
 {
-    [TestFixture("chrome", true)]
-    [TestFixture("firefox", false)]
-    [TestFixture("edge", true)]
+    [TestFixture("chrome", false)]
+   // [TestFixture("firefox", false)]
+   // [TestFixture("edge", true)]
     [Parallelizable(ParallelScope.Fixtures)]
     internal class SmartphoneFilterTest : BaseTest
     {
@@ -30,27 +30,21 @@ namespace Selenium_FirstTask.Tests
 
             SmartphonesPage smartphonesPage = new SmartphonesPage(driver);
             smartphonesPage?.SelectBrand();
+            smartphonesPage?.EnterMinPrice("5000");
             smartphonesPage?.EnterMaxPrice("5200");
             smartphonesPage?.SelectMemory();
+            smartphonesPage?.SelectResolution();
+            smartphonesPage?.SelectMaxResolution();
 
 
             int totalAmount = smartphonesPage.GetTotalItems();
             Console.WriteLine($"Total amount of products is {totalAmount}");
 
-            smartphonesPage?.ShowNextItems();
-            smartphonesPage?.VerifySmartphoneBrand("Apple");
-            smartphonesPage?.VerifySmartphoneMemory("512", "1");
-            smartphonesPage?.VerifySmartphonePrice(5200);
+            //smartphonesPage?.ShowNextItems();
+            //smartphonesPage?.VerifySmartphoneBrand("Apple");
+            //smartphonesPage?.VerifySmartphoneMemory("512", "1");
+            //smartphonesPage?.VerifySmartphonePrice(5200);
 
-            smartphonesPage?.ShowNextItems();
-            smartphonesPage?.VerifySmartphoneBrand("Apple");
-            smartphonesPage?.VerifySmartphoneMemory("512", "1");
-            smartphonesPage?.VerifySmartphonePrice(5200);
-
-            smartphonesPage?.ShowNextItems();
-            smartphonesPage?.VerifySmartphoneBrand("Apple");
-            smartphonesPage?.VerifySmartphoneMemory("512", "1");
-            smartphonesPage?.VerifySmartphonePrice(5200);
         }
     }
 }

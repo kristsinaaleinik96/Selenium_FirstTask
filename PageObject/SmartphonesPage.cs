@@ -63,6 +63,36 @@ namespace Selenium_FirstTask.PO
             WaitForPageUpdate();
         }
 
+        public void SelectResolution()
+        {
+            Logger.Info("Selecting smartphone max resolution");
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", fullResolution);
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", fullResolution);
+            WaitForPageUpdate();
+        }
+        public void SelectMaxResolution()
+        {
+            Logger.Info("Selecting smartphone max resolution");
+            IWebElement dropdown = driver.FindElement(By.XPath("//div[.='1242x2688']/following-sibling::select"));
+           // ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", dropdown);
+            //wait.Until(ExpectedConditions.ElementToBeClickable(dropdown));
+            dropdown.Click();
+            SelectElement selectElement = new SelectElement(dropdown);
+            selectElement.SelectByValue("1290x2796");
+            WaitForPageUpdate();
+        }
+
+        public void EnterMinPrice(string minPrice)
+        {
+            Logger.Info("Entering on MIN price");
+            minPriceInput.SendKeys(minPrice);
+            minPriceInput.SendKeys(Keys.Tab);
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            wait.Until(d => minPriceInput.GetAttribute("value") == minPrice);
+            Logger.Info($"MIN price input successfully set to: {minPrice}");
+            WaitForPageUpdate();
+        }
+
         public void EnterMaxPrice(string maxPrice)
         {
             Logger.Info("Entering on MAX price");
@@ -75,7 +105,7 @@ namespace Selenium_FirstTask.PO
         }
         public int GetTotalItems()
         {
-
+            Thread.Sleep(10000);
             var totalCount = totalItems.Text;
             var match = Regex.Match(totalCount, @"\d+");
             if (match.Success)
@@ -134,11 +164,30 @@ namespace Selenium_FirstTask.PO
 
         public void ShowNextItems()
         {
-            Logger.Info("Clicking on 'Show next items' button");
-            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", showNextItemsButton);
-            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", showNextItemsButton);
-            WaitForPageUpdate();
+            //Logger.Info("Clicking on 'Show next items' button");
+            //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", showNextItemsButton);
+            //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", showNextItemsButton);
+            //WaitForPageUpdate();
+
+            while (true)
+            {
+
+                VerifySmartphoneBrand("Apple");
+                VerifySmartphoneMemory("512", "1");
+                VerifySmartphonePrice(5200);
+
+                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", showNextItemsButton);
+                if (showNextItemsButton == null || !showNextItemsButton.Displayed)
+                {
+                    Logger.Info("'Show next items button is not accessible. All items have been loaded '");
+                    break;
+
+                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", showNextItemsButton);
+                WaitForPageUpdate();
+
+            }
         }
+    }
 
     }
 }
