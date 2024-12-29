@@ -19,14 +19,27 @@ pipeline {
             }
             steps {
                 echo 'Building the application...'
+                sh 'dotnet build Selenium_FirstTask.sln --configuration Release'
             }
         }
         stage('Test') {
+            when {
+                expression {
+                    return CODE_CHANGES == true
+                }
+            }
             steps {
-                echo 'Testing the application...'
+                echo 'Running tests...'
+                sh 'dotnet test Selenium_FirstTask.csproj --configuration Release --logger "trx;LogFileName=test_results.trx"'
+                junit '**/TestResults/*.trx'
             }
         }
         stage('Deploy') {
+            when {
+                expression {
+                    return CODE_CHANGES == true
+                }
+            }
             steps {
                 echo 'Deploying the application...'
             }
