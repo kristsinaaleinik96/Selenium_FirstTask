@@ -1,10 +1,7 @@
 pipeline {
     agent any
-    options {
-        disableConcurrentBuilds()
-    }
     triggers {
-        githubPush()
+        pollSCM('H H/8 * * *')
     }
     stages {
         stage('Initialize') {
@@ -15,16 +12,16 @@ pipeline {
             }
         }
         stage('Build') {
-            when {
-                expression {
-                    return CODE_CHANGES == true
-                }
-            }
-            steps {
-                echo 'Building the application...'
-                sh 'dotnet build Selenium_FirstTask.sln --configuration Release'
-            }
+    when {
+        expression {
+            return CODE_CHANGES == true
         }
+    }
+    steps {
+        echo 'Building the application...'
+        sh 'dotnet build YourSolution.sln --configuration Release'
+    }
+}
         stage('Test') {
             when {
                 expression {
