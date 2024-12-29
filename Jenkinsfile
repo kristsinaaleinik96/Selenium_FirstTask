@@ -22,7 +22,7 @@ pipeline {
             }
             steps {
                 echo 'Building the application...'
-                sh 'dotnet build YourSolution.sln --configuration Release'
+                sh 'dotnet build Selenium_FirstTask.sln --configuration Release'
             }
         }
         stage('Test') {
