@@ -1,8 +1,8 @@
 pipeline {
     agent any
     triggers {
-        pollSCM('H/15 * * * *') 
-    }
+    githubPush()
+}
     stages {
         stage('Initialize') {
             steps {
