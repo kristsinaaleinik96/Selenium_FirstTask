@@ -164,30 +164,12 @@ namespace Selenium_FirstTask.PO
 
         public void ShowNextItems()
         {
-            //Logger.Info("Clicking on 'Show next items' button");
-            //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", showNextItemsButton);
-            //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", showNextItemsButton);
-            //WaitForPageUpdate();
-
-            while (true)
-            {
-
-                VerifySmartphoneBrand("Apple");
-                VerifySmartphoneMemory("512", "1");
-                VerifySmartphonePrice(5200);
-
-                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", showNextItemsButton);
-                if (showNextItemsButton == null || !showNextItemsButton.Displayed)
-                {
-                    Logger.Info("'Show next items button is not accessible. All items have been loaded '");
-                    break;
-
-                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", showNextItemsButton);
-                WaitForPageUpdate();
-
-            }
+            Logger.Info("Clicking on 'Show next items' button");
+            WaitForPageUpdate();
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", showNextItemsButton);
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", showNextItemsButton);
+            WaitForPageUpdate();
         }
-    }
 
     }
 }

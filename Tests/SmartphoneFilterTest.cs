@@ -30,7 +30,7 @@ namespace Selenium_FirstTask.Tests
 
             SmartphonesPage smartphonesPage = new SmartphonesPage(driver);
             smartphonesPage?.SelectBrand();
-            smartphonesPage?.EnterMinPrice("5000");
+            //smartphonesPage?.EnterMinPrice("5000");
             smartphonesPage?.EnterMaxPrice("5200");
             smartphonesPage?.SelectMemory();
             smartphonesPage?.SelectResolution();
@@ -40,10 +40,20 @@ namespace Selenium_FirstTask.Tests
             int totalAmount = smartphonesPage.GetTotalItems();
             Console.WriteLine($"Total amount of products is {totalAmount}");
 
-            //smartphonesPage?.ShowNextItems();
-            //smartphonesPage?.VerifySmartphoneBrand("Apple");
-            //smartphonesPage?.VerifySmartphoneMemory("512", "1");
-            //smartphonesPage?.VerifySmartphonePrice(5200);
+            smartphonesPage?.ShowNextItems();
+            smartphonesPage?.VerifySmartphoneBrand("Apple");
+            smartphonesPage?.VerifySmartphoneMemory("512", "1");
+            smartphonesPage?.VerifySmartphonePrice(5200);
+
+            smartphonesPage?.ShowNextItems();
+            smartphonesPage?.VerifySmartphoneBrand("Apple");
+            smartphonesPage?.VerifySmartphoneMemory("512", "1");
+            smartphonesPage?.VerifySmartphonePrice(5200);
+
+            smartphonesPage?.ShowNextItems();
+            smartphonesPage?.VerifySmartphoneBrand("Apple");
+            smartphonesPage?.VerifySmartphoneMemory("512", "1");
+            smartphonesPage?.VerifySmartphonePrice(5200);
 
         }
     }
