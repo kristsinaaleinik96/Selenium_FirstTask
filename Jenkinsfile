@@ -12,16 +12,16 @@ pipeline {
             }
         }
         stage('Build') {
-            when {
-                expression {
-                    return CODE_CHANGES == true
-                }
-            }
-            steps {
-                echo 'Building the application...'
-                sh 'dotnet build Selenium_FirstTask.sln --configuration Release'
-            }
+    when {
+        expression {
+            return CODE_CHANGES == true
         }
+    }
+    steps {
+        echo 'Building the application...'
+        sh 'dotnet build YourSolution.sln --configuration Release'
+    }
+}
         stage('Test') {
             when {
                 expression {
@@ -56,6 +56,9 @@ def getGitChanges() {
             echo "Message: ${entry.msg}"
             hasChanges = true
         }
+    }
+    if (!hasChanges) {
+        echo 'No changes detected.'
     }
     return hasChanges
 }
