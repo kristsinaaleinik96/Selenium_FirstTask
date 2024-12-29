@@ -1,26 +1,45 @@
-CODE_CHANGES == getGitChanges()
 pipeline {
     agent any
     stages {
+        stage('Initialize') {
+            steps {
+                script {
+                    CODE_CHANGES = getGitChanges()
+                }
+            }
+        }
         stage('Build') {
             when {
                 expression {
-                    CODE_CHANGES == true
+                    return CODE_CHANGES == true
                 }
             }
             steps {
-                echo 'building the application...'
+                echo 'Building the application...'
             }
         }
         stage('Test') {
             steps {
-                echo 'testing the application...'
+                echo 'Testing the application...'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'deploying the application...'
+                echo 'Deploying the application...'
             }
         }
     }
+}
+
+def getGitChanges() {
+    def changeLogSets = currentBuild.changeSets
+    def hasChanges = false
+    for (change in changeLogSets) {
+        for (entry in change.items) {
+            echo "Changed by: ${entry.author} on ${new Date(entry.timestamp)}"
+            echo "Message: ${entry.msg}"
+            hasChanges = true
+        }
+    }
+    return hasChanges
 }
