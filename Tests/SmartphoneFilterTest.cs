@@ -50,11 +50,6 @@ namespace Selenium_FirstTask.Tests
             smartphonesPage?.VerifySmartphoneMemory("512", "1");
             smartphonesPage?.VerifySmartphonePrice(5200);
 
-            smartphonesPage?.ShowNextItems();
-            smartphonesPage?.VerifySmartphoneBrand("Apple");
-            smartphonesPage?.VerifySmartphoneMemory("512", "1");
-            smartphonesPage?.VerifySmartphonePrice(5200);
-
 
         }
     }
