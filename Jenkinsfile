@@ -1,8 +1,11 @@
 pipeline {
     agent any
+    options {
+        disableConcurrentBuilds()
+    }
     triggers {
-    githubPush()
-}
+        githubPush()
+    }
     stages {
         stage('Initialize') {
             steps {
@@ -12,16 +15,16 @@ pipeline {
             }
         }
         stage('Build') {
-    when {
-        expression {
-            return CODE_CHANGES == true
+            when {
+                expression {
+                    return CODE_CHANGES == true
+                }
+            }
+            steps {
+                echo 'Building the application...'
+                sh 'dotnet build YourSolution.sln --configuration Release'
+            }
         }
-    }
-    steps {
-        echo 'Building the application...'
-        sh 'dotnet build YourSolution.sln --configuration Release'
-    }
-}
         stage('Test') {
             when {
                 expression {
