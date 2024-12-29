@@ -11,7 +11,7 @@ using Selenium_FirstTask.PO;
 namespace Selenium_FirstTask.Tests
 {
     [TestFixture("chrome", false)]
-   // [TestFixture("firefox", false)]
+    [TestFixture("firefox", false)]
    // [TestFixture("edge", true)]
     [Parallelizable(ParallelScope.Fixtures)]
     internal class SmartphoneFilterTest : BaseTest
