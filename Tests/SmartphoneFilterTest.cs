@@ -11,7 +11,7 @@ using Selenium_FirstTask.PO;
 namespace Selenium_FirstTask.Tests
 {
     [TestFixture("chrome", false)]
-   // [TestFixture("firefox", false)]
+    [TestFixture("firefox", false)]
    // [TestFixture("edge", true)]
     [Parallelizable(ParallelScope.Fixtures)]
     internal class SmartphoneFilterTest : BaseTest
@@ -44,7 +44,7 @@ namespace Selenium_FirstTask.Tests
             smartphonesPage?.VerifySmartphoneBrand("Apple");
             smartphonesPage?.VerifySmartphoneMemory("512", "1");
             smartphonesPage?.VerifySmartphonePrice(5200);
-
+			
             smartphonesPage?.ShowNextItems();
             smartphonesPage?.VerifySmartphoneBrand("Apple");
             smartphonesPage?.VerifySmartphoneMemory("512", "1");
@@ -54,6 +54,7 @@ namespace Selenium_FirstTask.Tests
             smartphonesPage?.VerifySmartphoneBrand("Apple");
             smartphonesPage?.VerifySmartphoneMemory("512", "1");
             smartphonesPage?.VerifySmartphonePrice(5200);
+
 
         }
     }
