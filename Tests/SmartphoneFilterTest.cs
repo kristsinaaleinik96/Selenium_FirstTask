@@ -10,7 +10,7 @@ using Selenium_FirstTask.PO;
 
 namespace Selenium_FirstTask.Tests
 {
-    [TestFixture("chrome", true)]
+    [TestFixture("chrome", false)]
     //[TestFixture("firefox", false)]
     //[TestFixture("edge", true)]
     [Parallelizable(ParallelScope.Fixtures)]
