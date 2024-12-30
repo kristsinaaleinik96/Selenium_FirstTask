@@ -31,6 +31,7 @@ namespace Selenium_FirstTask.PO
         private IWebElement memoryCheckbox => wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//li[contains(text(), 'от 512 ГБ')]")));
         private IWebElement totalItems => wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[contains(text(), 'Найден')]")));
         private IWebElement showNextItemsButton => wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[contains(text(), 'Следующие')]")));
+        private IWebElement showLastItemsButton => wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[contains(text(), 'Последние')]")));
 
         private List<IWebElement> Smartphones => driver.FindElements(By.XPath("//a[(contains(@class, 'catalog-form__link catalog-form__link_primary-additional'))]")).ToList();
         private readonly By filterLoaderLocator = By.XPath("//div[@class='catalog-interaction__state catalog-interaction__state_initial catalog-interaction__state_disabled catalog-interaction__state_control']");
@@ -165,11 +166,19 @@ namespace Selenium_FirstTask.PO
         public void ShowNextItems()
         {
             Logger.Info("Clicking on 'Show next items' button");
-            WaitForPageUpdate();
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", showNextItemsButton);
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", showNextItemsButton);
             WaitForPageUpdate();
         }
+        public void ShowLastItems()
+        {
+            Logger.Info("Clicking on 'Show last items' button");
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", showLastItemsButton);
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", showLastItemsButton);
+            WaitForPageUpdate();
+        }
+
 
     }
+
 }
